@@ -39,17 +39,17 @@ Estou evoluindo meus estudos para uma stack full stack mais completa com:
 
 Na **ASSESSORIA TECH**, participo do desenvolvimento de soluções tecnológicas voltadas para automação, sistemas web, integração de dados e apoio à gestão pública e empresarial.
 
-Entre os principais projetos em que atuo, estão sistemas para **ERP**, **gestão de licitações** e integrações com plataformas públicas como o **PNCP — Portal Nacional de Contratações Públicas**.
+Entre os principais projetos em que atuo, estão sistemas de **ERP**, **gestão de licitações**, integrações com plataformas públicas como o **PNCP — Portal Nacional de Contratações Públicas** e automações para facilitar o dia a dia.
 
 ---
 
 ## 💼 Projetos principais
 
-### 📊 ERP
+### 📊 ERP - Em produção
 
 Sistema voltado para gestão empresarial, com foco em organização de processos internos, cadastros, controle administrativo, relatórios e estrutura modular para novas funcionalidades.
 
-### 🏛️ Gestão de licitações com integração PNCP
+### 🏛️ Gestão de licitações com integração PNCP - Em produção
 
 Projeto focado no acompanhamento e organização de licitações públicas, com integração ao **PNCP**, filtros de pesquisa, organização de oportunidades e apoio à tomada de decisão.
 
