@@ -23,6 +23,8 @@ React • Banco de Dados • DevOps
 
 - 📊 ERP empresarial - em densenvolvimento
 - 🏛️ Gestão de licitações com integração PNCP - em densenvolvimento
+- 🧵 CLI empresarioal (suporte técnico) - em desenvolvimento
+- 🧶 CLI pessoal (gestão de ropos) 
 - 📘 Gerador de diários de obra
 - 🔐 Backup automatizado via SFTP
 - 🌐 Gateway web com Nginx
