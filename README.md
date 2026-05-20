@@ -1,6 +1,6 @@
 # Guilherme Garcia 👋
 
-### Desenvolvedor iniciante | JavaScript | Automação | ERP | Gestão Pública
+### Desenvolvedor iniciante | JavaScript | Automação | Gestão Pública e privada | Web
 
 Desenvolvedor na **[ASSESSORIA TECH](https://github.com/DEV-ASSESSORIA-TECH)**, atuando com sistemas web, automações, integrações e soluções para gestão pública e empresarial.
 
