@@ -2,41 +2,54 @@
 
 ### Desenvolvedor iniciante | JavaScript | Automação | ERP | Gestão Pública
 
-Desenvolvedor na **ASSESSORIA TECH**, atuando com sistemas web, automações, integrações e soluções para gestão pública e empresarial.
+Desenvolvedor na **[ASSESSORIA TECH](https://github.com)**, atuando com sistemas web, automações, integrações e soluções para gestão pública e empresarial.
 
-## 🚀 Stack
+---
 
-```txt
-JavaScript • Node.js • HTML • CSS
-APIs REST • Nginx • Linux
-Git • GitHub • Automação
-```
+## 🛠️ Stack
+`JavaScript` • `Node.js` • `PostgreSQL` • `Prisma` • `Linux` • `Nginx` • `Git` • `HTML` • `CSS`
 
 ## 📚 Estudando
+`TypeScript` • `NestJS` • `Next.js` • `React` • `DevOps` • `Banco de Dados`
 
-```txt
-TypeScript • NestJS • Next.js
-React • Banco de Dados • DevOps
-```
+---
 
-## 💼 Projetos
+## 💼 Projetos desenvolvidos na [Assessoria](https://github.com)
 
-- 📊 ERP empresarial - em densenvolvimento
-- 🏛️ Gestão de licitações com integração PNCP - em densenvolvimento
-- 🧵 CLI empresarioal (suporte técnico) - em desenvolvimento
-- 🧶 CLI pessoal (gestão de ropos) 
-- 📘 Gerador de diários de obra
-- 🔐 Backup automatizado via SFTP
-- 🌐 Gateway web com Nginx
-- 🔒 Automação DNS-01 para SSL/TLS
+- 📊 **ERP Empresarial** (Privado) - Sistema focado em gestão empresarial utilizando arquitetura web moderna. _[Em desenvolvimento]_
+- 🏛️ **Gestão de Licitações com Integração PNCP** (Privado) - API e automação integrada ao Portal Nacional de Contratações Públicas. _[Em desenvolvimento]_
+- 🧵 **CLI Empresarial** (Privado) - Interface de linha de comando para otimizar o suporte técnico interno. _[Em desenvolvimento]_
+- 📘 **[Gerador de diários de obra em Python](https://github.com)** - Automação para criação ágil de relatórios e diários de obras físicas.
+- 🔐 **[Backup automatizado via SFTP](https://github.com)** - Script de segurança para rotinas de backup em servidores Linux.
+- 🌐 **Gateway Web com Nginx** - Estruturação de servidores, proxies reversos e distribuição de tráfego.
+- 🔒 **[Automação DNS-01 para SSL/TLS](https://github.com)** - Renovação automática de certificados SSL via Certbot com DNS Hostinger.
+
+## 🚀 Projetos Pessoais
+
+- 🧶 **[CLI Pessoal (gestão de repositórios)](https://github.com)** - Ferramenta em linha de comando para gerenciamento rápido de repositórios locais.
+- 🎮 **[Landing/Store Page - Minelandia](https://github.com)** - Site institucional e loja integrada para servidor de Minecraft.
+- ⚙️ **[Script para Manutenção de Máquina](https://github.com)** - Automação em lote (`.bat` / PowerShell) para otimização de sistemas Windows.
+- 🎵 **[YouTube Playlist Importer](https://github.com)** - Script integrando a API do YouTube para migração e backup de playlists.
+
+---
+
+## 📊 Estatísticas do GitHub
+
+
+| Meus Commits e Atividades | Linguagens Mais Utilizadas |
+| :---: | :---: |
+| <img height="160em" src="https://vercel.app" /> | <img height="160em" src="https://vercel.app" /> |
+
+---
 
 ## 🎯 Objetivos
 
-- Evoluir como desenvolvedor full stack
-- Criar soluções úteis e escaláveis
-- Automatizar processos reais
-- Aprimorar backend, frontend e infraestrutura
+- Evoluir como desenvolvedor Full Stack.
+- Criar soluções úteis, robustas e escaláveis.
+- Automatizar processos reais de infraestrutura e negócios.
+- Aprofundar conhecimentos em Backend (NestJS/Prisma) e Frontend (Next.js).
 
 ## 📫 Contato
 
-Acompanhe meus projetos e estudos aqui no GitHub.
+* 💼 **LinkedIn:** [guilherme-garciatech](https://linkedin.com)
+* 📧 **E-mail:** guilherme.garciatech@gmail.com
