@@ -71,10 +71,8 @@ Desenvolvedor na **[ASSESSORIA TECH](https://github.com/DEV-ASSESSORIA-TECH)**, 
 ---
 
 ## 📊 GitHub Stats
-
 <p align="center">
-  <img height="160em" src="https://github-readme-stats.vercel.app/api?username=GUILHERME-GARCIATECH&show_icons=true&theme=tokyonight&hide_border=true" />
-  <img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=GUILHERME-GARCIATECH&layout=compact&theme=tokyonight&hide_border=true" />
+  <img src="https://raw.githubusercontent.com/GUILHERME-GARCIATECH/GUILHERME-GARCIATECH/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </p>
 
 ---
