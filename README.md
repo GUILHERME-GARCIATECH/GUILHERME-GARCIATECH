@@ -1,6 +1,6 @@
 # Guilherme Garcia 👋
 
-### Desenvolvimento Web • Automação • Infraestrutura • Soluções Empresariais
+### Desenvolvimento Web • Automação • Scripts • Infraestrutura • Soluções Empresariais
 
 Desenvolvedor na **[ASSESSORIA TECH](https://github.com/DEV-ASSESSORIA-TECH)**, atuando com sistemas web, automações, integrações e infraestrutura voltadas para gestão pública e empresarial.
 
