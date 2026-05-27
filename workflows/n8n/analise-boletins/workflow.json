@@ -1,0 +1,223 @@
+{
+  "name": "Análise IA - Boletins de Licitação",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "30 7 * * *"
+            },
+            {
+              "field": "cronExpression",
+              "expression": "30 12 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Executar 07:30 e 12:30",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -900,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      config: {\n        openaiApiKey: \"COLE_SUA_CHAVE_OPENAI_AQUI\",\n        modeloIA: \"gpt-4.1-mini\",\n        emailDestino: \"comercial@suaempresa.com.br\",\n        emailRemetente: \"licitacoes@suaempresa.com.br\",\n        assuntoEmail: `Resumo de licitações recomendadas - ${new Date().toLocaleDateString('pt-BR')}`,\n        scoreMinimoParaEnviar: 60,\n        quantidadeMaximaRecomendacoes: 10,\n        termosObrigatorios: [\n          \"licitação\",\n          \"pregão\",\n          \"edital\",\n          \"dispensa\",\n          \"concorrência\"\n        ],\n        termosNegocio: [\n          \"tecnologia\",\n          \"informática\",\n          \"suporte técnico\",\n          \"microsoft\",\n          \"servidor\",\n          \"rede\",\n          \"firewall\",\n          \"backup\",\n          \"nuvem\",\n          \"software\",\n          \"hardware\",\n          \"infraestrutura\",\n          \"help desk\"\n        ]\n      }\n    }\n  }\n];"
+      },
+      "id": "config",
+      "name": "CONFIG - Alterar variáveis",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -680,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 50,
+        "filters": {}
+      },
+      "id": "buscar-emails",
+      "name": "Buscar e-mails Outlook",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        0
+      ],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "ALTERAR_CREDENCIAL",
+          "name": "ALTERAR - Microsoft Outlook"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const config = $('CONFIG - Alterar variáveis').first().json.config;\n\nconst termosObrigatorios = config.termosObrigatorios.map(t => t.toLowerCase());\n\nconst emailsFiltrados = [];\n\nfor (const item of items) {\n  const subject = item.json.subject || '';\n  const body = item.json.bodyPreview || item.json.body?.content || item.json.text || '';\n  const receivedDateTime = item.json.receivedDateTime || '';\n  const from = item.json.from?.emailAddress?.address || item.json.from || '';\n\n  const texto = `${subject} ${body}`.toLowerCase();\n  const relevante = termosObrigatorios.some(t => texto.includes(t));\n\n  if (!relevante) continue;\n\n  emailsFiltrados.push({\n    json: {\n      config,\n      email: {\n        subject,\n        body,\n        receivedDateTime,\n        from\n      }\n    }\n  });\n}\n\nreturn emailsFiltrados;"
+      },
+      "id": "filtrar-emails",
+      "name": "Filtrar e-mails relevantes",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{$json.config.openaiApiKey}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": $json.config.modeloIA,\n  \"input\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Você é um analista especialista em licitações públicas para uma empresa de tecnologia, suporte técnico, infraestrutura, servidores, Microsoft 365, redes, segurança, firewall, backup, software, hardware e serviços gerenciados. Responda exclusivamente em JSON válido.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": `Analise o boletim de licitação abaixo.\\n\\nCritérios de score:\\n- Aderência ao negócio: 35 pontos\\n- Viabilidade operacional: 25 pontos\\n- Potencial financeiro: 20 pontos\\n- Urgência/prazo: 10 pontos\\n- Risco baixo: 10 pontos\\n\\nClassificação:\\n- 90 a 100: Alta prioridade\\n- 75 a 89: Boa oportunidade\\n- 60 a 74: Média prioridade\\n- Abaixo de 60: Baixa prioridade ou ignorar\\n\\nRetorne JSON neste formato:\\n{\\n  \"licitacoes\": [\\n    {\\n      \"titulo\": \"\",\\n      \"orgao\": \"\",\\n      \"cidade_estado\": \"\",\\n      \"modalidade\": \"\",\\n      \"objeto\": \"\",\\n      \"prazo\": \"\",\\n      \"valor_estimado\": \"\",\\n      \"link\": \"\",\\n      \"score\": 0,\\n      \"classificacao\": \"Alta prioridade | Boa oportunidade | Média prioridade | Baixa prioridade | Ignorar\",\\n      \"motivos_positivos\": [],\\n      \"riscos\": [],\\n      \"recomendacao\": \"\"\\n    }\\n  ]\\n}\\n\\nAssunto do e-mail:\\n${$json.email.subject}\\n\\nRemetente:\\n${$json.email.from}\\n\\nCorpo do boletim:\\n${$json.email.body}`\n    }\n  ]\n}"
+      },
+      "id": "analisar-ia",
+      "name": "Analisar com IA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const config = $('CONFIG - Alterar variáveis').first().json.config;\nconst todas = [];\n\nfor (const item of items) {\n  let texto = '';\n\n  if (item.json.output_text) {\n    texto = item.json.output_text;\n  } else if (item.json.output?.[0]?.content?.[0]?.text) {\n    texto = item.json.output[0].content[0].text;\n  } else {\n    texto = JSON.stringify(item.json);\n  }\n\n  try {\n    const parsed = JSON.parse(texto);\n    const licitacoes = parsed.licitacoes || [];\n\n    for (const lic of licitacoes) {\n      if ((lic.score || 0) >= config.scoreMinimoParaEnviar && lic.classificacao !== 'Ignorar') {\n        todas.push(lic);\n      }\n    }\n  } catch (error) {\n    todas.push({\n      titulo: 'Erro ao interpretar resposta da IA',\n      orgao: '',\n      cidade_estado: '',\n      modalidade: '',\n      objeto: texto,\n      prazo: '',\n      valor_estimado: '',\n      link: '',\n      score: 0,\n      classificacao: 'Erro',\n      motivos_positivos: [],\n      riscos: [error.message],\n      recomendacao: 'Revisar manualmente.'\n    });\n  }\n}\n\ntodas.sort((a, b) => (b.score || 0) - (a.score || 0));\nconst selecionadas = todas.slice(0, config.quantidadeMaximaRecomendacoes);\n\nlet html = `<h2>Resumo automático de licitações</h2>`;\nhtml += `<p><strong>Data:</strong> ${new Date().toLocaleString('pt-BR')}</p>`;\nhtml += `<p><strong>Total recomendado:</strong> ${selecionadas.length}</p>`;\n\nif (selecionadas.length === 0) {\n  html += `<p>Nenhuma licitação relevante foi encontrada com score mínimo de ${config.scoreMinimoParaEnviar}.</p>`;\n} else {\n  selecionadas.forEach((lic, index) => {\n    html += `<hr>`;\n    html += `<h3>${index + 1}. ${lic.titulo || 'Sem título'}</h3>`;\n    html += `<p><strong>Score:</strong> ${lic.score}</p>`;\n    html += `<p><strong>Classificação:</strong> ${lic.classificacao || ''}</p>`;\n    html += `<p><strong>Órgão:</strong> ${lic.orgao || ''}</p>`;\n    html += `<p><strong>Local:</strong> ${lic.cidade_estado || ''}</p>`;\n    html += `<p><strong>Modalidade:</strong> ${lic.modalidade || ''}</p>`;\n    html += `<p><strong>Objeto:</strong> ${lic.objeto || ''}</p>`;\n    html += `<p><strong>Prazo:</strong> ${lic.prazo || ''}</p>`;\n    html += `<p><strong>Valor estimado:</strong> ${lic.valor_estimado || ''}</p>`;\n\n    if (lic.link) {\n      html += `<p><strong>Link:</strong> <a href=\"${lic.link}\">${lic.link}</a></p>`;\n    }\n\n    if (lic.motivos_positivos?.length) {\n      html += `<p><strong>Motivos positivos:</strong></p><ul>`;\n      lic.motivos_positivos.forEach(m => html += `<li>${m}</li>`);\n      html += `</ul>`;\n    }\n\n    if (lic.riscos?.length) {\n      html += `<p><strong>Riscos:</strong></p><ul>`;\n      lic.riscos.forEach(r => html += `<li>${r}</li>`);\n      html += `</ul>`;\n    }\n\n    html += `<p><strong>Recomendação:</strong> ${lic.recomendacao || ''}</p>`;\n  });\n}\n\nhtml += `<hr>`;\nhtml += `<p><em>Esta análise foi gerada automaticamente por IA e deve ser validada antes de qualquer decisão comercial, técnica ou jurídica.</em></p>`;\n\nreturn [\n  {\n    json: {\n      config,\n      licitacoes: selecionadas,\n      email: {\n        to: config.emailDestino,\n        from: config.emailRemetente,\n        subject: config.assuntoEmail,\n        html\n      }\n    }\n  }\n];"
+      },
+      "id": "montar-email",
+      "name": "Montar e-mail final",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{$json.email.from}}",
+        "toEmail": "={{$json.email.to}}",
+        "subject": "={{$json.email.subject}}",
+        "html": "={{$json.email.html}}",
+        "options": {}
+      },
+      "id": "enviar-email",
+      "name": "Enviar e-mail resumo",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        480,
+        0
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "ALTERAR_CREDENCIAL",
+          "name": "ALTERAR - SMTP"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Executar 07:30 e 12:30": {
+      "main": [
+        [
+          {
+            "node": "CONFIG - Alterar variáveis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CONFIG - Alterar variáveis": {
+      "main": [
+        [
+          {
+            "node": "Buscar e-mails Outlook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar e-mails Outlook": {
+      "main": [
+        [
+          {
+            "node": "Filtrar e-mails relevantes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtrar e-mails relevantes": {
+      "main": [
+        [
+          {
+            "node": "Analisar com IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analisar com IA": {
+      "main": [
+        [
+          {
+            "node": "Montar e-mail final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar e-mail final": {
+      "main": [
+        [
+          {
+            "node": "Enviar e-mail resumo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Cuiaba"
+  },
+  "active": false,
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "id": "analise-ia-boletins-licitacao",
+  "tags": []
+}
