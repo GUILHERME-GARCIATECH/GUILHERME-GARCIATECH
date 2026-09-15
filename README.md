@@ -4,7 +4,7 @@ Desenvolvedor e profissional de infraestrutura na **[ASSESSORIA TECH](https://gi
 
 Atuo com desenvolvimento de sistemas, automação, infraestrutura de TI, integrações e administração de ambientes corporativos.
 
-Graduando em **Tecnologia em Análise e Desenvolvimento de Sistemas — IFMT**.
+Graduando em **TADS no Instituto Federal do Estado de Mato Grosoo**.
 
 ---
 
