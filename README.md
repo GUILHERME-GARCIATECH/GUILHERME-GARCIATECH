@@ -11,7 +11,7 @@ Atuo com desenvolvimento de sistemas, automação, infraestrutura de TI, integra
 `TypeScript` • `JavaScript` • `Node.js` • `NestJS` • `Next.js` • `React` • `PostgreSQL` • `APIs REST`
 
 **Infraestrutura & DevOps**  
-`Linux` • `Windows Server` • `Docker` • `Nginx` • `GitHub Actions` • `Hyper-V` • `DNS` • `SSL/TLS`
+`Linux` • `Windows Server` • `Docker` • `AWS` • `Nginx` • `GitHub Actions` • `Hyper-V` • `DNS` • `SSL/TLS`
 
 **Automação & Integrações**  
 `PowerShell` • `n8n` • `REST APIs` • `S3` • `MinIO` • `rclone`
