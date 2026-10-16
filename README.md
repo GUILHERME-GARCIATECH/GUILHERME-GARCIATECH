@@ -40,12 +40,6 @@ Graduando em **TADS no Instituto Federal do Estado de Mato Grosoo**.
 ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)
 
-### Administração, Redes & Observabilidade
-
-![Microsoft 365](https://img.shields.io/badge/Microsoft%20365-D83B01?logo=microsoft&logoColor=white)
-![Active Directory](https://img.shields.io/badge/Active%20Directory-0078D4?logo=microsoft&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/TimescaleDB-FDB515?logo=postgresql&logoColor=black)
-
 ---
 
 ## 🎯 Foco atual
