@@ -16,8 +16,6 @@ Graduando em **TADS no Instituto Federal do Estado de Mato Grosoo**.
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
 ![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=nestjs&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
 ![REST API](https://img.shields.io/badge/REST%20API-005571?logo=fastapi&logoColor=white)
@@ -29,7 +27,6 @@ Graduando em **TADS no Instituto Federal do Estado de Mato Grosoo**.
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?logo=amazonwebservices&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 ![Hyper-V](https://img.shields.io/badge/Hyper--V-0078D4?logo=windows&logoColor=white)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?logo=cloudflare&logoColor=white)
 
@@ -47,12 +44,7 @@ Graduando em **TADS no Instituto Federal do Estado de Mato Grosoo**.
 
 ![Microsoft 365](https://img.shields.io/badge/Microsoft%20365-D83B01?logo=microsoft&logoColor=white)
 ![Active Directory](https://img.shields.io/badge/Active%20Directory-0078D4?logo=microsoft&logoColor=white)
-![Zabbix](https://img.shields.io/badge/Zabbix-CC0000?logo=zabbix&logoColor=white)
-![Tailscale](https://img.shields.io/badge/Tailscale-242424?logo=tailscale&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/TimescaleDB-FDB515?logo=postgresql&logoColor=black)
-![DNS](https://img.shields.io/badge/DNS-4285F4?logo=googlecloud&logoColor=white)
-![SSL/TLS](https://img.shields.io/badge/SSL%20%2F%20TLS-003A70?logo=letsencrypt&logoColor=white)
 
 ---
 
